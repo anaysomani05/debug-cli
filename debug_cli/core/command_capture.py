@@ -68,8 +68,7 @@ class CommandCapture:
             ),
             CommandResult(
                 command=Command(
-                    text="git push origin main",
-                    working_directory="/home/user/project"
+                    text="git push origin main", working_directory="/home/user/project"
                 ),
                 stdout="",
                 stderr=(
