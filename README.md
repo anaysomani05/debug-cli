@@ -240,6 +240,5 @@ debug main --command "npm install missing-package" --error "npm ERR! code E404" 
 # Git error
 debug main --command "git push origin main" --error "error: failed to push some refs" --exit-code 1
 ```
----
 
 **Debug CLI** - Transform cryptic errors into actionable insights with AI-powered terminal debugging.
