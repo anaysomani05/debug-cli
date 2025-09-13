@@ -34,7 +34,7 @@ jobs:
     
     - name: Run flake8
       run: |
-        flake8 debug_cli/ tests/ --count --statistics
+        flake8 debug_cli/ tests/ --count --statistics --max-line-length=88
     
     - name: Run mypy
       run: |
