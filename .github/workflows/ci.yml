@@ -139,12 +139,12 @@ jobs:
     
     - name: Security check with safety
       run: |
-        safety check
+        python -m safety check
     
     - name: Security check with bandit
       run: |
-        bandit -r debug_cli/ -f json -o bandit-report.json || true
-        bandit -r debug_cli/
+        python -m bandit -r debug_cli/ -f json -o bandit-report.json || true
+        python -m bandit -r debug_cli/
 
   release:
     runs-on: ubuntu-latest

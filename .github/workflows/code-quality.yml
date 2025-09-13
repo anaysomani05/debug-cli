@@ -42,5 +42,5 @@ jobs:
     
     - name: Run bandit security check
       run: |
-        bandit -r debug_cli/ -f json -o bandit-report.json || true
-        bandit -r debug_cli/
+        python -m bandit -r debug_cli/ -f json -o bandit-report.json || true
+        python -m bandit -r debug_cli/
