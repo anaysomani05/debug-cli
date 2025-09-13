@@ -1,6 +1,6 @@
 {
   "errors": [],
-  "generated_at": "2025-09-13T21:13:04Z",
+  "generated_at": "2025-09-13T21:20:14Z",
   "metrics": {
     "_totals": {
       "CONFIDENCE.HIGH": 0,
@@ -11,9 +11,9 @@
       "SEVERITY.LOW": 0,
       "SEVERITY.MEDIUM": 0,
       "SEVERITY.UNDEFINED": 0,
-      "loc": 1268,
+      "loc": 1291,
       "nosec": 0,
-      "skipped_tests": 32
+      "skipped_tests": 35
     },
     "debug_cli/__init__.py": {
       "CONFIDENCE.HIGH": 0,
@@ -63,7 +63,7 @@
       "SEVERITY.LOW": 0,
       "SEVERITY.MEDIUM": 0,
       "SEVERITY.UNDEFINED": 0,
-      "loc": 146,
+      "loc": 151,
       "nosec": 0,
       "skipped_tests": 0
     },
@@ -89,9 +89,9 @@
       "SEVERITY.LOW": 0,
       "SEVERITY.MEDIUM": 0,
       "SEVERITY.UNDEFINED": 0,
-      "loc": 114,
+      "loc": 126,
       "nosec": 0,
-      "skipped_tests": 1
+      "skipped_tests": 4
     },
     "debug_cli/core/shell_integration.py": {
       "CONFIDENCE.HIGH": 0,
@@ -180,7 +180,7 @@
       "SEVERITY.LOW": 0,
       "SEVERITY.MEDIUM": 0,
       "SEVERITY.UNDEFINED": 0,
-      "loc": 192,
+      "loc": 196,
       "nosec": 0,
       "skipped_tests": 27
     },
@@ -206,7 +206,7 @@
       "SEVERITY.LOW": 0,
       "SEVERITY.MEDIUM": 0,
       "SEVERITY.UNDEFINED": 0,
-      "loc": 172,
+      "loc": 174,
       "nosec": 0,
       "skipped_tests": 0
     }

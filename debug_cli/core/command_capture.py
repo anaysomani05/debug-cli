@@ -46,7 +46,7 @@ class CommandCapture:
                 command=Command(
                     text="python nonexistent_script.py",
                     working_directory="/home/user/project",
-                    shell="bash",
+                    shell="bash",  # nosec B604
                     exit_code=2,
                 ),
                 stdout="",
@@ -61,7 +61,7 @@ class CommandCapture:
                 command=Command(
                     text="npm install missing-package",
                     working_directory="/home/user/project",
-                    shell="bash",
+                    shell="bash",  # nosec B604
                     exit_code=1,
                 ),
                 stdout="",
@@ -76,7 +76,7 @@ class CommandCapture:
                 command=Command(
                     text="git push origin main",
                     working_directory="/home/user/project",
-                    shell="bash",
+                    shell="bash",  # nosec B604
                     exit_code=1,
                 ),
                 stdout="",

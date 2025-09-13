@@ -22,7 +22,9 @@ class OutputFormatter:
         self.console = Console(force_terminal=enable_colors)
         self.enable_colors = enable_colors
 
-    def display_explanation(self, explanation: Explanation, raw_output: bool = False) -> None:
+    def display_explanation(
+        self, explanation: Explanation, raw_output: bool = False
+    ) -> None:
         """
         Display an explanation in a formatted way.
 

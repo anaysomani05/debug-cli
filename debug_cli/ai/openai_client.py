@@ -55,7 +55,9 @@ class OpenAIClient:
 
             content = response.choices[0].message.content
             if content is None:
-                return self._create_fallback_explanation(command_result, "No content in AI response")
+                return self._create_fallback_explanation(
+                    command_result, "No content in AI response"
+                )
             return self._parse_response(content, command_result)
 
         except Exception as e:

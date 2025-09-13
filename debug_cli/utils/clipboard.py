@@ -185,12 +185,16 @@ class ClipboardManager:
         try:
             if self.system == "darwin":
                 # Check if pbcopy is available
-                subprocess.run(["which", "pbcopy"], check=True, capture_output=True)  # nosec B603, B607
+                subprocess.run(
+                    ["which", "pbcopy"], check=True, capture_output=True
+                )  # nosec B603, B607
                 return True
             elif self.system == "linux":
                 # Check if xclip or xsel is available
                 try:
-                    subprocess.run(["which", "xclip"], check=True, capture_output=True)  # nosec B603, B607
+                    subprocess.run(
+                        ["which", "xclip"], check=True, capture_output=True
+                    )  # nosec B603, B607
                     return True
                 except subprocess.CalledProcessError:
                     try:
