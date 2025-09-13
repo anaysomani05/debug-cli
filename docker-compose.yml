@@ -1,0 +1,36 @@
+services:
+  debug-cli:
+    build: .
+    container_name: debug-cli
+    environment:
+      - OPENAI_API_KEY=${OPENAI_API_KEY}
+      - OPENAI_MODEL=${OPENAI_MODEL:-gpt-3.5-turbo}
+      - API_TIMEOUT=${API_TIMEOUT:-30}
+      - DEFAULT_EXPLANATION_STYLE=${DEFAULT_EXPLANATION_STYLE:-detailed}
+      - ENABLE_COLORS=${ENABLE_COLORS:-true}
+    volumes:
+      # Mount shell history for command capture
+      - ~/.bash_history:/home/debug-user/.bash_history:ro
+      - ~/.zsh_history:/home/debug-user/.zsh_history:ro
+      # Mount current directory for development
+      - .:/app
+    stdin_open: true
+    tty: true
+    command: ["--help"]
+
+  # Development service with live reloading
+  debug-cli-dev:
+    build: .
+    container_name: debug-cli-dev
+    environment:
+      - OPENAI_API_KEY=${OPENAI_API_KEY}
+      - OPENAI_MODEL=${OPENAI_MODEL:-gpt-3.5-turbo}
+    volumes:
+      - .:/app
+      - ~/.bash_history:/home/debug-user/.bash_history:ro
+      - ~/.zsh_history:/home/debug-user/.zsh_history:ro
+    stdin_open: true
+    tty: true
+    command: ["bash"]
+    profiles:
+      - dev
