@@ -10,7 +10,7 @@ from ..models.command import Command, CommandResult
 class CommandCapture:
     """Handles capturing and retrieving failed terminal commands."""
 
-    def __init__(self):
+    def __init__(self) -> None:
         self.shell_history_files = {
             "bash": [".bash_history", ".bashrc"],
             "zsh": [".zsh_history", ".zshrc"],
@@ -46,6 +46,8 @@ class CommandCapture:
                 command=Command(
                     text="python nonexistent_script.py",
                     working_directory="/home/user/project",
+                    shell="bash",
+                    exit_code=2,
                 ),
                 stdout="",
                 stderr=(
@@ -53,11 +55,14 @@ class CommandCapture:
                     "[Errno 2] No such file or directory"
                 ),
                 exit_code=2,
+                execution_time=0.1,
             ),
             CommandResult(
                 command=Command(
                     text="npm install missing-package",
                     working_directory="/home/user/project",
+                    shell="bash",
+                    exit_code=1,
                 ),
                 stdout="",
                 stderr=(
@@ -65,10 +70,14 @@ class CommandCapture:
                     "https://registry.npmjs.org/missing-package"
                 ),
                 exit_code=1,
+                execution_time=2.5,
             ),
             CommandResult(
                 command=Command(
-                    text="git push origin main", working_directory="/home/user/project"
+                    text="git push origin main",
+                    working_directory="/home/user/project",
+                    shell="bash",
+                    exit_code=1,
                 ),
                 stdout="",
                 stderr=(
@@ -77,6 +86,7 @@ class CommandCapture:
                     "that you do\nhint: not have locally."
                 ),
                 exit_code=1,
+                execution_time=1.2,
             ),
         ]
 
@@ -100,11 +110,13 @@ class CommandCapture:
             command=Command(
                 text=command_text,
                 working_directory=os.getcwd(),
-                shell=os.environ.get("SHELL", "unknown"),
+                shell=os.environ.get("SHELL", "unknown"),  # nosec B604
+                exit_code=exit_code,
             ),
             stdout="",
             stderr=error_output,
             exit_code=exit_code,
+            execution_time=None,
         )
 
     def get_shell_type(self) -> str:

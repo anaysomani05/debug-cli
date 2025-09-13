@@ -109,7 +109,7 @@ class ExplanationService:
             prevention_tips=explanation_data.get("prevention_tips"),
         )
 
-    def _save_to_cache(self, cache_key: str, explanation: Explanation):
+    def _save_to_cache(self, cache_key: str, explanation: Explanation) -> None:
         """Save explanation to cache."""
         cache_data = {
             "timestamp": datetime.now().isoformat(),
@@ -134,7 +134,7 @@ class ExplanationService:
 
         self.cache[cache_key] = cache_data
 
-    def clear_cache(self):
+    def clear_cache(self) -> None:
         """Clear the explanation cache."""
         self.cache.clear()
 

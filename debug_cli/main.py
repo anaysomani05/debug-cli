@@ -48,7 +48,7 @@ def main(
     verbose: bool = typer.Option(
         False, "--verbose", "-v", help="Enable verbose output"
     ),
-):
+) -> None:
     """
     Explain failed terminal commands using AI.
 
@@ -151,7 +151,7 @@ def main(
 
 
 @app.command()
-def setup():
+def setup() -> None:
     """Set up shell integration for automatic command capture."""
     console.print("[blue]Setting up shell integration...[/blue]")
 
@@ -165,7 +165,7 @@ def setup():
 
 
 @app.command()
-def config():
+def config() -> None:
     """Show current configuration."""
     config = Config()
 
@@ -190,7 +190,7 @@ def config():
 
 
 @app.command()
-def version():
+def version() -> None:
     """Show version information."""
     from . import __version__
 

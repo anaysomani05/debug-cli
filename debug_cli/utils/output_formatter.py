@@ -22,7 +22,7 @@ class OutputFormatter:
         self.console = Console(force_terminal=enable_colors)
         self.enable_colors = enable_colors
 
-    def display_explanation(self, explanation: Explanation, raw_output: bool = False):
+    def display_explanation(self, explanation: Explanation, raw_output: bool = False) -> None:
         """
         Display an explanation in a formatted way.
 
@@ -35,7 +35,7 @@ class OutputFormatter:
         else:
             self._display_formatted_explanation(explanation)
 
-    def _display_formatted_explanation(self, explanation: Explanation):
+    def _display_formatted_explanation(self, explanation: Explanation) -> None:
         """Display a formatted explanation."""
         # Summary panel
         self.console.print()
@@ -86,7 +86,7 @@ class OutputFormatter:
         self.console.print()
         self._display_confidence(explanation.confidence)
 
-    def _display_raw_explanation(self, explanation: Explanation):
+    def _display_raw_explanation(self, explanation: Explanation) -> None:
         """Display raw explanation without formatting."""
         self.console.print(f"Summary: {explanation.summary}")
         self.console.print(f"Detailed: {explanation.detailed_explanation}")
@@ -103,7 +103,7 @@ class OutputFormatter:
 
         self.console.print(f"Overall Confidence: {explanation.confidence}")
 
-    def _display_fix_suggestions(self, fix_suggestions: List[FixSuggestion]):
+    def _display_fix_suggestions(self, fix_suggestions: List[FixSuggestion]) -> None:
         """Display fix suggestions in a table."""
         table = Table(title="[bold green]Fix Suggestions[/bold green]")
         table.add_column("Description", style="cyan")
@@ -131,7 +131,7 @@ class OutputFormatter:
                 )
             )
 
-    def _display_related_errors(self, related_errors: List[str]):
+    def _display_related_errors(self, related_errors: List[str]) -> None:
         """Display related errors."""
         error_list = "\n".join(f"• {error}" for error in related_errors)
         self.console.print(
@@ -142,7 +142,7 @@ class OutputFormatter:
             )
         )
 
-    def _display_prevention_tips(self, prevention_tips: List[str]):
+    def _display_prevention_tips(self, prevention_tips: List[str]) -> None:
         """Display prevention tips."""
         tips_list = "\n".join(f"• {tip}" for tip in prevention_tips)
         self.console.print(
@@ -153,7 +153,7 @@ class OutputFormatter:
             )
         )
 
-    def _display_confidence(self, confidence: float):
+    def _display_confidence(self, confidence: float) -> None:
         """Display confidence indicator."""
         confidence_color = self._get_confidence_color(confidence)
         confidence_text = f"[{confidence_color}]{confidence:.1%}[/{confidence_color}]"
@@ -177,7 +177,7 @@ class OutputFormatter:
 
     def display_multiple_explanations(
         self, explanations: List[Explanation], raw_output: bool = False
-    ):
+    ) -> None:
         """
         Display multiple explanations.
 
@@ -197,14 +197,14 @@ class OutputFormatter:
             if i < len(explanations):
                 self.console.print("\n" + "=" * 50)
 
-    def display_error(self, error_message: str):
+    def display_error(self, error_message: str) -> None:
         """Display an error message."""
         self.console.print()
         self.console.print(
             Panel(error_message, title="[bold red]Error[/bold red]", border_style="red")
         )
 
-    def display_success(self, message: str):
+    def display_success(self, message: str) -> None:
         """Display a success message."""
         self.console.print()
         self.console.print(

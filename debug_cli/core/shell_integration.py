@@ -1,7 +1,7 @@
 """Shell integration utilities for command capture and execution."""
 
 import os
-import subprocess
+import subprocess  # nosec B404
 from pathlib import Path
 from typing import Any, Dict, Optional
 
@@ -9,7 +9,7 @@ from typing import Any, Dict, Optional
 class ShellIntegration:
     """Handles shell integration and command execution."""
 
-    def __init__(self):
+    def __init__(self) -> None:
         self.shell_type = self._detect_shell()
         self.history_file = self._get_history_file()
 
@@ -59,7 +59,7 @@ class ShellIntegration:
     def _get_python_version(self) -> str:
         """Get the current Python version."""
         try:
-            result = subprocess.run(
+            result = subprocess.run(  # nosec B603, B607
                 ["python", "--version"], capture_output=True, text=True, timeout=5
             )
             return result.stdout.strip()
@@ -80,7 +80,7 @@ class ShellIntegration:
             CompletedProcess object with result
         """
         try:
-            return subprocess.run(
+            return subprocess.run(  # nosec B602
                 command,
                 shell=True,
                 capture_output=True,

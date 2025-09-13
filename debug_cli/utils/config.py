@@ -2,7 +2,7 @@
 
 import os
 from pathlib import Path
-from typing import Any, Dict, Optional
+from typing import Any, Dict, Optional, cast
 
 from dotenv import load_dotenv
 
@@ -21,7 +21,7 @@ class Config:
         self.config_file = config_file or ".env"
         self._load_config()
 
-    def _load_config(self):
+    def _load_config(self) -> None:
         """Load configuration from environment variables and config file."""
         # Load from .env file if it exists
         if Path(self.config_file).exists():
@@ -94,17 +94,17 @@ class Config:
     @property
     def openai_api_key(self) -> Optional[str]:
         """Get OpenAI API key."""
-        return self.get("OPENAI_API_KEY")
+        return cast(Optional[str], self.get("OPENAI_API_KEY"))
 
     @property
     def openai_model(self) -> str:
         """Get OpenAI model to use."""
-        return self.get("OPENAI_MODEL", "gpt-3.5-turbo")
+        return str(self.get("OPENAI_MODEL", "gpt-3.5-turbo"))
 
     @property
     def backend_url(self) -> Optional[str]:
         """Get backend API URL."""
-        return self.get("BACKEND_URL")
+        return cast(Optional[str], self.get("BACKEND_URL"))
 
     @property
     def api_timeout(self) -> int:
@@ -114,7 +114,7 @@ class Config:
     @property
     def redis_url(self) -> Optional[str]:
         """Get Redis URL for caching."""
-        return self.get("REDIS_URL")
+        return cast(Optional[str], self.get("REDIS_URL"))
 
     @property
     def cache_ttl(self) -> int:
@@ -124,7 +124,7 @@ class Config:
     @property
     def default_explanation_style(self) -> str:
         """Get default explanation style."""
-        return self.get("DEFAULT_EXPLANATION_STYLE", "detailed")
+        return str(self.get("DEFAULT_EXPLANATION_STYLE", "detailed"))
 
     @property
     def enable_colors(self) -> bool:

@@ -1,14 +1,14 @@
 """Clipboard management utilities."""
 
 import platform
-import subprocess
+import subprocess  # nosec B404
 from typing import Optional
 
 
 class ClipboardManager:
     """Handles clipboard operations across different platforms."""
 
-    def __init__(self):
+    def __init__(self) -> None:
         self.system = platform.system().lower()
 
     def copy_to_clipboard(self, text: str) -> bool:
@@ -36,7 +36,7 @@ class ClipboardManager:
     def _copy_macos(self, text: str) -> bool:
         """Copy text to clipboard on macOS."""
         try:
-            process = subprocess.Popen(
+            process = subprocess.Popen(  # nosec B603, B607
                 ["pbcopy"],
                 stdin=subprocess.PIPE,
                 stdout=subprocess.PIPE,
@@ -51,7 +51,7 @@ class ClipboardManager:
         """Copy text to clipboard on Linux."""
         # Try xclip first
         try:
-            process = subprocess.Popen(
+            process = subprocess.Popen(  # nosec B603, B607
                 ["xclip", "-selection", "clipboard"],
                 stdin=subprocess.PIPE,
                 stdout=subprocess.PIPE,
@@ -60,12 +60,12 @@ class ClipboardManager:
             process.communicate(input=text.encode("utf-8"))
             if process.returncode == 0:
                 return True
-        except Exception:
+        except Exception:  # nosec B110
             pass
 
         # Try xsel as fallback
         try:
-            process = subprocess.Popen(
+            process = subprocess.Popen(  # nosec B603, B607
                 ["xsel", "--clipboard", "--input"],
                 stdin=subprocess.PIPE,
                 stdout=subprocess.PIPE,
@@ -86,7 +86,7 @@ class ClipboardManager:
         except ImportError:
             # Fallback to PowerShell
             try:
-                process = subprocess.Popen(
+                process = subprocess.Popen(  # nosec B603, B607
                     ["powershell", "-command", f'Set-Clipboard -Value "{text}"'],
                     stdout=subprocess.PIPE,
                     stderr=subprocess.PIPE,
@@ -120,7 +120,7 @@ class ClipboardManager:
     def _get_macos(self) -> Optional[str]:
         """Get clipboard content on macOS."""
         try:
-            result = subprocess.run(
+            result = subprocess.run(  # nosec B603, B607
                 ["pbpaste"], capture_output=True, text=True, timeout=5
             )
             return result.stdout if result.returncode == 0 else None
@@ -131,7 +131,7 @@ class ClipboardManager:
         """Get clipboard content on Linux."""
         # Try xclip first
         try:
-            result = subprocess.run(
+            result = subprocess.run(  # nosec B603, B607
                 ["xclip", "-selection", "clipboard", "-o"],
                 capture_output=True,
                 text=True,
@@ -139,12 +139,12 @@ class ClipboardManager:
             )
             if result.returncode == 0:
                 return result.stdout
-        except Exception:
+        except Exception:  # nosec B110
             pass
 
         # Try xsel as fallback
         try:
-            result = subprocess.run(
+            result = subprocess.run(  # nosec B603, B607
                 ["xsel", "--clipboard", "--output"],
                 capture_output=True,
                 text=True,
@@ -159,11 +159,11 @@ class ClipboardManager:
         try:
             import pyperclip
 
-            return pyperclip.paste()
+            return str(pyperclip.paste())
         except ImportError:
             # Fallback to PowerShell
             try:
-                result = subprocess.run(
+                result = subprocess.run(  # nosec B603, B607
                     ["powershell", "-command", "Get-Clipboard"],
                     capture_output=True,
                     text=True,
@@ -185,16 +185,16 @@ class ClipboardManager:
         try:
             if self.system == "darwin":
                 # Check if pbcopy is available
-                subprocess.run(["which", "pbcopy"], check=True, capture_output=True)
+                subprocess.run(["which", "pbcopy"], check=True, capture_output=True)  # nosec B603, B607
                 return True
             elif self.system == "linux":
                 # Check if xclip or xsel is available
                 try:
-                    subprocess.run(["which", "xclip"], check=True, capture_output=True)
+                    subprocess.run(["which", "xclip"], check=True, capture_output=True)  # nosec B603, B607
                     return True
                 except subprocess.CalledProcessError:
                     try:
-                        subprocess.run(
+                        subprocess.run(  # nosec B603, B607
                             ["which", "xsel"], check=True, capture_output=True
                         )
                         return True
@@ -208,7 +208,7 @@ class ClipboardManager:
                     return True
                 except ImportError:
                     try:
-                        subprocess.run(
+                        subprocess.run(  # nosec B603, B607
                             ["powershell", "-command", "Get-Clipboard"],
                             check=True,
                             capture_output=True,

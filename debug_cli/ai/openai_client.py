@@ -54,6 +54,8 @@ class OpenAIClient:
             )
 
             content = response.choices[0].message.content
+            if content is None:
+                return self._create_fallback_explanation(command_result, "No content in AI response")
             return self._parse_response(content, command_result)
 
         except Exception as e:
@@ -163,6 +165,7 @@ specified in the system prompt."""
             fix_suggestions=[
                 FixSuggestion(
                     description="Check the command syntax and try again",
+                    command=None,
                     explanation=(
                         "The command may have syntax errors or missing dependencies"
                     ),
