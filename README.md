@@ -1,10 +1,6 @@
 # Debug CLI
 **AI-Powered Terminal Error Explanation & Analysis Tool**
 
-[![CI/CD Pipeline](https://github.com/yourusername/debug-cli/workflows/CI/CD%20Pipeline/badge.svg)](https://github.com/yourusername/debug-cli/actions)
-[![Code Quality](https://github.com/yourusername/debug-cli/workflows/Code%20Quality/badge.svg)](https://github.com/yourusername/debug-cli/actions)
-[![Python 3.9+](https://img.shields.io/badge/python-3.9+-blue.svg)](https://www.python.org/downloads/)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 Transform your debugging workflow with intelligent error analysis, AI-powered explanations, and actionable fix suggestions. Built with modern Python technologies and OpenAI integration for instant, human-readable error explanations.
 
