@@ -73,7 +73,8 @@ def main(
             for key, error in config_errors.items():
                 console.print(f"  [red]{key}:[/red] {error}")
             console.print(
-                "\n[yellow]Please set the required environment variables or create a .env file.[/yellow]"
+                "\n[yellow]Please set the required environment variables or "
+                "create a .env file.[/yellow]"
             )
             raise typer.Exit(1)
 
@@ -108,7 +109,8 @@ def main(
             if not command_results:
                 console.print("[yellow]No failed commands found in history.[/yellow]")
                 console.print(
-                    "[blue]Try running a command that fails, then run 'debug' again.[/blue]"
+                    "[blue]Try running a command that fails, then run 'debug' "
+                    "again.[/blue]"
                 )
                 raise typer.Exit(0)
 
@@ -134,7 +136,8 @@ def main(
                     console.print("\n[red]Failed to copy to clipboard[/red]")
             else:
                 console.print(
-                    "\n[yellow]Clipboard functionality not available on this system[/yellow]"
+                    "\n[yellow]Clipboard functionality not available on this "
+                    "system[/yellow]"
                 )
 
     except KeyboardInterrupt:

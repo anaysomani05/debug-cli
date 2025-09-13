@@ -61,7 +61,9 @@ class OpenAIClient:
 
     def _get_system_prompt(self) -> str:
         """Get the system prompt for the AI."""
-        return """You are an expert software engineer and system administrator. Your job is to analyze failed terminal commands and provide clear, actionable explanations and fix suggestions.
+        return """You are an expert software engineer and system administrator.
+Your job is to analyze failed terminal commands and provide clear, actionable
+explanations and fix suggestions.
 
 When analyzing a failed command, you should:
 1. Identify the root cause of the error
@@ -104,7 +106,8 @@ Error Output:
 Standard Output:
 {command_result.stdout}
 
-Please provide a detailed analysis and fix suggestions in the JSON format specified in the system prompt."""
+Please provide a detailed analysis and fix suggestions in the JSON format
+specified in the system prompt."""
 
         return prompt
 
@@ -160,7 +163,9 @@ Please provide a detailed analysis and fix suggestions in the JSON format specif
             fix_suggestions=[
                 FixSuggestion(
                     description="Check the command syntax and try again",
-                    explanation="The command may have syntax errors or missing dependencies",
+                    explanation=(
+                        "The command may have syntax errors or missing dependencies"
+                    ),
                     confidence=0.3,
                 )
             ],

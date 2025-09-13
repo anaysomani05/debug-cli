@@ -48,7 +48,10 @@ class CommandCapture:
                     working_directory="/home/user/project",
                 ),
                 stdout="",
-                stderr="python: can't open file 'nonexistent_script.py': [Errno 2] No such file or directory",
+                stderr=(
+                    "python: can't open file 'nonexistent_script.py': "
+                    "[Errno 2] No such file or directory"
+                ),
                 exit_code=2,
             ),
             CommandResult(
@@ -57,15 +60,23 @@ class CommandCapture:
                     working_directory="/home/user/project",
                 ),
                 stdout="",
-                stderr="npm ERR! code E404\nnpm ERR! 404 Not Found - GET https://registry.npmjs.org/missing-package",
+                stderr=(
+                    "npm ERR! code E404\nnpm ERR! 404 Not Found - GET "
+                    "https://registry.npmjs.org/missing-package"
+                ),
                 exit_code=1,
             ),
             CommandResult(
                 command=Command(
-                    text="git push origin main", working_directory="/home/user/project"
+                    text="git push origin main",
+                    working_directory="/home/user/project"
                 ),
                 stdout="",
-                stderr="error: failed to push some refs to 'origin'\nhint: Updates were rejected because the remote contains work that you do\nhint: not have locally.",
+                stderr=(
+                    "error: failed to push some refs to 'origin'\n"
+                    "hint: Updates were rejected because the remote contains work "
+                    "that you do\nhint: not have locally."
+                ),
                 exit_code=1,
             ),
         ]

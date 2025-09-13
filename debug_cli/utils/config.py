@@ -15,7 +15,8 @@ class Config:
         Initialize configuration.
 
         Args:
-            config_file: Path to configuration file, defaults to .env in current directory
+            config_file: Path to configuration file, defaults to .env in current
+                directory
         """
         self.config_file = config_file or ".env"
         self._load_config()

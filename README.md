@@ -240,32 +240,6 @@ debug main --command "npm install missing-package" --error "npm ERR! code E404" 
 # Git error
 debug main --command "git push origin main" --error "error: failed to push some refs" --exit-code 1
 ```
-
-## Contributing
-
-1. Fork the repository
-2. Create a feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit your changes (`git commit -m 'Add some amazing feature'`)
-4. Push to the branch (`git push origin feature/amazing-feature`)
-5. Open a Pull Request
-
-## License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
-## Roadmap
-
-- [ ] **Shell Integration**: Automatic command capture from shell history
-- [ ] **IDE Integration**: VS Code and PyCharm extensions
-- [ ] **Team Features**: Shared error databases and team analytics
-- [ ] **Custom Models**: Support for local LLMs and custom AI models
-- [ ] **Plugin System**: Extensible architecture for custom error handlers
-- [ ] **Web Dashboard**: Browser-based interface for error analytics
-
-## Support
-
-If you encounter any issues or have questions, please file an issue on GitHub or reach out to the maintainers.
-
 ---
 
 **Debug CLI** - Transform cryptic errors into actionable insights with AI-powered terminal debugging.
